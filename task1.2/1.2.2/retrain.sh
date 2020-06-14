@@ -1,0 +1,1 @@
+python retrain.py --layers 8 --batch-size 400 --epochs 300  --arc-checkpoint "./checkpoints/epoch_46.json" --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight_decay 5e-4

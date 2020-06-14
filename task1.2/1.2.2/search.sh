@@ -1,0 +1,1 @@
+python search.py --batch-size 64 --epochs 50  --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight_decay 5e-4

@@ -1,0 +1,7 @@
+{
+    "initial_lr":{"_type":"uniform", "_value":[0.001, 0.2]},
+    "ending_lr":{"_type":"uniform", "_value":[0.001, 0]},
+    "optimizer":{"_type":"choice", "_value":["SGD", "Adam", "RMSprop"]},
+    "model":{"_type":"choice", "_value":["vgg16","vgg19", "resnet18","resnet34", "densenet121","senet18"]},
+    "cutout":{"_type":"quniform","_value":[0,8,1]}
+}

@@ -1,0 +1,19 @@
+{
+    "count":[
+        "job","marital","education","default","housing","contact","loan","poutcome"
+    ],
+    "aggregate":[
+        ["age","balance","duration","pdays"],
+        [
+            "job","marital","education","default","housing","contact","loan","poutcome"
+        ]
+    ],
+    "crosscount":[
+        [
+            "job","marital","education","default","housing","contact","loan","poutcome"
+        ],
+        [
+            "job","marital","education","default","housing","contact","loan","poutcome"
+        ]
+    ]
+}

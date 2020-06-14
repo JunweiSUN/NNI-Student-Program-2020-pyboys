@@ -1,0 +1,21 @@
+authorName: pyboys
+experimentName: example_mnist_pytorch_with_nni
+trialConcurrency: 1
+maxExecDuration: 1h
+maxTrialNum: 100
+#choice: local, remote, pai
+trainingServicePlatform: local
+searchSpacePath: search_space.json
+#choice: true, false
+useAnnotation: false
+tuner:
+  #choice: TPE, Random, Anneal, Evolution, BatchTuner, MetisTuner, GPTuner
+  #SMAC (SMAC should be installed through nnictl)
+  builtinTunerName: TPE
+  classArgs:
+    #choice: maximize, minimize
+    optimize_mode: maximize
+trial:
+  command: python main.py
+  codeDir: .
+  gpuNum: 1

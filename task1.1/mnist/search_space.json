@@ -1,0 +1,7 @@
+{
+    "batch_size": {"_type":"choice", "_value": [16, 32, 64, 128]},
+    "linear_hidden":{"_type":"choice","_value":[32, 64, 128, 256]},
+    "lr":{"_type":"choice","_value":[0.0001, 0.001, 0.01, 0.1]},
+    "dropout_rate_1":{"_type":"choice","_value":[0.2, 0.25, 0.3]},
+    "dropout_rate_2":{"_type":"choice","_value":[0.3, 0.4, 0.5]}
+}

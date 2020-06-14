@@ -160,13 +160,11 @@ localConfig:
 
 WebUI
 
-![image-20200613150741084](C:\Users\kwong\AppData\Roaming\Typora\typora-user-images\image-20200613150741084.png)
-
-![image-20200614105546152](C:\Users\kwong\AppData\Roaming\Typora\typora-user-images\image-20200614105546152.png)
+![image-20200614105546152](https://github.com/Kwongrf/NNI-Student-Program-2020-pyboys/blob/master/task1.2/1.2.2/img/image-20200614105546152.png)
 
 从上图可以看出，搜索的超参和模型准确率能达到0.94，相比baseline的0.84有了非常大的提升。
 
-![image-20200614105522101](C:\Users\kwong\AppData\Roaming\Typora\typora-user-images\image-20200614105522101.png)
+![image-20200614105522101](https://github.com/Kwongrf/NNI-Student-Program-2020-pyboys/blob/master/task1.2/1.2.2/img/image-20200614105522101.png)
 
 从上图我们可以看出，initial_lr对结果的影响很大，如果太大了，比如大于0.1了，准确率就无法达到很高，即使训练过程学习率会一直衰减。都没有RMSprop的结果的原因是刚开始有几个它的结果，但是准确率一直停留在0.1，所以我们就人为中止了该trail。
 
@@ -177,7 +175,7 @@ WebUI
 NAS的操作我们没有改得太复杂，基本都是将上一个阶段最好结果的参数拿来了，search.py和retrain.py都参考了nni的[示例代码](https://github.com/microsoft/nni/tree/master/examples/nas/darts)， 8层，batch-size=64，尝试了128但是显存超了，epochs我们一开始觉得会不会太少了，毕竟之前训练都是两三百个epoch起步，但是考虑到这是搜索架构，两三百epoch时间太久了，而且最后还需要retrain，所以没必要。
 
 ```shell
-python search.py --batch-size 64 --epochs 50  --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight-decay 5e-4
+python search.py --batch-size 64 --epochs 50  --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight_decay 5e-4
 ```
 
 ```python
@@ -296,7 +294,7 @@ epoch_49.json
 retrain参数选择的也是和HPO阶段最好模型一样的，不过batchsize还是64
 
 ```shell
-python retrain.py --layers 8 --batch-size 64 --epochs 300 --optimizer 'sgd' --arc-checkpoint "./checkpoints/epoch_49.json" --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight-decay 5e-4
+python retrain.py --layers 8 --batch-size 64 --epochs 300 --arc-checkpoint "./checkpoints/epoch_49.json" --initial_lr 0.06 --ending_lr 0.0005 --channel 16 --weight_decay 5e-4
 ```
 
 retrain结果
@@ -324,4 +322,4 @@ INFO (nni) Valid: [300/300] Final Prec@1 94.0400%
 INFO (nni) Final best Prec@1 = 94.1300%
 ```
 
-NAS得到的架构retrain了300个epoch后得到的准确率为94.13%，这个分数还是又提升空间的，毕竟现在最高的结果已经到了0.98了。
+NAS得到的架构retrain了300个epoch后得到的准确率为94.13%，这个分数还是有不少的提升空间的，毕竟现在最高的结果已经能达到0.98。
